@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Qiey’s Personal Website</title>
+
+  <link rel="icon" type="image/x-icon" href="img/icon.ico">
+  <link rel="stylesheet" href="css/style.css">
+  
+</head>
+<body>
+ <div id="airplane-container">
+   <!-- Replace this with your own plane image if you prefer -->
+<img src="img/airplane.png" alt="Airplane" class="airplane">
+ </div>
+ <div id="firework-js"></div>
+  <div id="splash" onclick="start()">💥 1# WINNER WINNER CHICKEN DINNER!! 💥</div>
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="img/PUBG.mp4" type="video/mp4">
+  </video>
+  <audio id="bgm" src="audio/pubg.mp3" loop></audio>
+
+  <header class="site-header">
+    <h1>Welcome to Qiey’s Personal Website</h1>
+    <button id="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <nav id="site-nav" class="site-nav">
+      <a href="index.html">About Me</a>
+      <a href="education.html">Education</a>
+      <a href="education.html" >Family</a>
+      <a href="education.html">Experience</a>
+      <a href="education.html">Friends</a>
+      <a href="education.html">Games</a>
+      <a href="education.html">Gallery</a>
+    </nav>
+
+  </header>
+
+<div class="airdrop-container">
+  <div class="airdrop-text">
+    🛩️ PUBG Airdrop incoming! Loot wisely and watch your back! 📦
+  </div>
+</div>
+
+  <section class="gallery">
+    <div class="slider-tab">
+      <div class="slides fixed-image">
+        <img src="img/qiey.jpg" alt="Pic 1" class="active">
+        <img src="img/aqil2.jpg" alt="Pic 2">
+        <img src="img/aqil3.jpg" alt="Pic 3">
+      </div>
+      <div class="tabs">
+        <button class="active">1</button>
+        <button>2</button>
+        <button>3</button>
+      </div>
+    </div>
+  </section>
+
+  <main class="content">
+    <section class="content">
+      <h2 class="neon-heading pulse-heading">ABOUT ME</h2>
+      <p class="neon-paragraph hover-effect">
+        Hello! I'm Muhammad Aqil Farhan bin Zulkiflee from Melor, Kelantan. I'm the youngest of four siblings and currently a student at UiTM, pursuing the CDIM110 programme. I have a deep passion for badminton and aspire to become a professional badminton player one day.
+      </p>
+    </section>
+
+    <section class="content">
+      <h2 class="neon-heading pulse-heading">BIOGRAPHY</h2>
+      <ul class="neon-paragraph hover-effect">
+        <li><strong>📅 Date of Birth:</strong> 19 January 2004</li>
+        <li><strong>🐱 Part-Time Job:</strong> Pet Shop Assistant</li>
+        <li><strong>🏡 Hometown:</strong> Melor, Kota Bharu</li>
+        <li><strong>🎮 Favourite Game:</strong> PUBG</li>
+        <li><strong>📝 Favourite Quote:</strong> "Sesungguhnya Tuhanku bersamaku, Dia akan memberi petunjuk."</li>
+      </ul>
+    </section>
+  </main>
+
+<section id="iframe-container" style="display:none; padding: 2rem;">
+  <iframe id="family-iframe" src="" style="width: 100%; height: 600px; border: none; border-radius: 12px; box-shadow: 0 0 15px #ffcc00;"></iframe>
+</section>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 by Qiey04</p>
+    <p>For educational purposes</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="js/fireworkParticles.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/bgm.js"></script>
+  <script>
+  function launchAirplane() {
+  const container = document.getElementById("airplane-container");
+  const plane = document.createElement("img");
+
+  plane.src = "img/airplane.png"; // You can use your own
+  plane.className = "airplane";
+
+  // Random vertical position between 5% and 60% of the screen
+  const topPosition = Math.random() * 60 + 5;
+  plane.style.top = `${topPosition}vh`;
+
+  container.appendChild(plane);
+
+  // Remove the airplane after animation
+  plane.addEventListener("animationend", () => {
+    container.removeChild(plane);
+  });
+}
+
+// Launch a new airplane every 8–15 seconds
+setInterval(() => {
+  launchAirplane();
+}, Math.random() * 7000 + 8000);
+</script>
+
+
+</body>
+
+</html>

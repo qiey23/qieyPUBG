@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qiey’s Personal Website</title>
+
+  <link rel="icon" type="image/x-icon" href="img/icon.ico">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+<body>
+  <!-- Background video -->
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="img/PUBG.mp4" type="video/mp4" />
+  </video>
+
+  <!-- Background Music -->
+  <audio id="bgm" src="audio/OnMyWay.mp3" loop autoplay></audio>
+
+  <!-- Fireworks -->
+  <div id="firework-js"></div>
+
+  <!-- Random Airplane -->
+  <div id="airplane-container"></div>
+
+  <!-- Header + Navigation -->
+  <header class="site-header">
+    <h1>Welcome to Qiey’s Personal Website</h1>
+    <button id="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <nav id="site-nav" class="site-nav">
+      <a href="index.html">About Me</a>
+      <a href="education.html">Education</a>
+      <a href="family.html" onclick="loadPage(event, 'family.html')">Family</a>
+      <a href="experience.html" onclick="loadPage(event, 'experience.html')">Experience</a>
+      <a href="friend.html" onclick="loadPage(event, 'friend.html')">Friends</a>
+      <a href="games.html" onclick="loadPage(event, 'games.html')">Games</a>
+      <a href="gallery.html" onclick="loadPage(event, 'gallery.html')">Gallery</a>
+    </nav>
+  </header>
+
+  <!-- Iframe for loading pages -->
+  <iframe id="content-frame" src="about.html" width="100%" height="600px" frameborder="0"></iframe>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>&copy; 2025 by Qiey04</p>
+    <p>For educational purposes</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function loadPage(event, page) {
+      event.preventDefault();
+      document.getElementById('content-frame').src = page;
+    }
+
+    // Airplane animation
+    function launchAirplane() {
+      const container = document.getElementById("airplane-container");
+      const plane = document.createElement("img");
+      plane.src = "img/Lambo.png";
+      plane.className = "airplane";
+      const topPosition = Math.random() * 60 + 5;
+      plane.style.top = `${topPosition}vh`;
+      container.appendChild(plane);
+      plane.addEventListener("animationend", () => {
+        container.removeChild(plane);
+      });
+    }
+
+    setInterval(() => {
+      launchAirplane();
+    }, Math.random() * 7000 + 8000);
+  </script>
+
+  <script src="js/script.js"></script>
+  <script src="js/bgm.js"></script>
+  <script src="js/fireworkParticles.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | Qiey’s Personal Website</title>
+  <link rel="stylesheet" href="css/style.css"/>
+
+  <style>
+    body.in-iframe header,
+    body.in-iframe nav,
+    body.in-iframe footer {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    if (window.self !== window.top) {
+      document.body.classList.add("in-iframe");
+    }
+  </script>
+ <video autoplay muted loop playsinline id="bg-video">
+    <source src="img/PUBG.mp4" type="video/mp4" />
+  </video>
+  <main class="content">
+    <section>
+      <h3 class="neon-heading">My Education Journey</h3>
+      <div class="neon-paragraph">
+        <p>My journey in education has been filled with memorable milestones and consistent hard work. I began my schooling years with a strong foundation at primary school, achieving excellent results in the UPSR with 6As. This early success motivated me to strive further.</p>
+        <p>In my religious education, I earned 8As in the UPKK exam, reflecting both my academic and spiritual development. These achievements helped me build strong discipline and time management skills.</p>
+        <p>I continued to excel during secondary school, where I proudly scored 3As in the SPM examination. These results opened many doors and further confirmed my dedication to learning and personal growth.</p>
+        <p>My passion for knowledge and curiosity in various subjects have shaped who I am today — someone who values education as a lifelong journey.</p>
+      </div>
+
+      <div class="image-gallery">
+        <img src="img/sk sri melor.jpg" alt="School photo 1">
+        <img src="img/sksm.jpg" alt="School photo 2">
+        <img src="img/MPI.jpg" alt="Award ceremony">
+      </div>
+    </section>
+  </main>
+</body>
+</html>

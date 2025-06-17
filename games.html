@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flappy Qiey 🐤</title>
+  <style>
+    body {
+      margin: 0;
+      background: #0a0a0a;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    canvas {
+      display: block;
+      margin: 0 auto;
+      border: 4px solid #ffcc00;
+      background: #111;
+      box-shadow: 0 0 30px #ffcc00aa;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ffcc00;
+      text-shadow: 0 0 10px #ffcc00;
+      margin-top: 1rem;
+      font-size: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Flappy Qiey 🐤</h1>
+<canvas id="gameCanvas" width="480" height="640"></canvas>
+
+<script>
+  const canvas = document.getElementById("gameCanvas");
+  const ctx = canvas.getContext("2d");
+
+  let frames = 0;
+  const DEGREE = Math.PI / 180;
+
+  // Game states
+  let gameState = "PLAY"; // "PLAY" or "OVER"
+  let score = 0;
+  let highScore = 0;
+
+  // Images
+  const birdImg = new Image();
+  birdImg.src = "img/char.png";
+
+  const bgImg = new Image();
+  bgImg.src = "img/pochinki.jpg";
+
+  const pipeTopImg = new Image();
+  pipeTopImg.src = "img/wall.png";
+
+  const pipeBottomImg = new Image();
+  pipeBottomImg.src = "img/wall.png";
+
+  // Bird
+  const bird = {
+    x: 50,
+    y: 150,
+    w: 50,
+    h: 50,
+    gravity: 0.25,
+    jump: 4.6,
+    speed: 0,
+    rotation: 0,
+
+    draw() {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.rotation);
+      ctx.drawImage(birdImg, -this.w / 2, -this.h / 2, this.w, this.h);
+      ctx.restore();
+    },
+
+    flap() {
+      if (gameState === "PLAY") this.speed = -this.jump;
+    },
+
+    update() {
+      if (gameState !== "PLAY") return;
+
+      this.speed += this.gravity;
+      this.y += this.speed;
+
+      if (this.y + this.h / 2 >= canvas.height) {
+        this.y = canvas.height - this.h / 2;
+        this.speed = 0;
+        gameOver();
+      }
+
+      this.rotation = this.speed >= this.jump ? 90 * DEGREE : -25 * DEGREE;
+    },
+
+    reset() {
+      this.y = 150;
+      this.speed = 0;
+    }
+  };
+
+  // Pipes
+  const pipes = [];
+  const pipeGap = 140;
+  const pipeWidth = 60;
+  let pipeSpeed = 2;
+
+  function spawnPipe() {
+    const topHeight = Math.floor(Math.random() * 200) + 100;
+    pipes.push({
+      x: canvas.width,
+      top: topHeight,
+      bottom: topHeight + pipeGap
+    });
+  }
+
+  function updatePipes() {
+    if (gameState !== "PLAY") return;
+
+    if (frames % 100 === 0) spawnPipe();
+
+    pipes.forEach((pipe, i) => {
+      pipe.x -= pipeSpeed;
+
+      // Collision check
+      if (
+        bird.x + bird.w / 2 > pipe.x &&
+        bird.x - bird.w / 2 < pipe.x + pipeWidth &&
+        (
+          bird.y - bird.h / 2 < pipe.top ||
+          bird.y + bird.h / 2 > pipe.bottom
+        )
+      ) {
+        gameOver();
+      }
+
+      // Score
+      if (pipe.x + pipeWidth === bird.x) score++;
+
+      // Remove offscreen pipe
+      if (pipe.x + pipeWidth < 0) pipes.splice(i, 1);
+    });
+  }
+
+  function drawPipes() {
+    pipes.forEach(pipe => {
+      ctx.drawImage(pipeTopImg, pipe.x, pipe.top - 320, pipeWidth, 320);
+      ctx.drawImage(pipeBottomImg, pipe.x, pipe.bottom, pipeWidth, 500);
+    });
+  }
+
+  function drawBackground() {
+    ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height);
+  }
+
+  function drawScore() {
+    ctx.fillStyle = "#ffcc00";
+    ctx.font = "24px Segoe UI";
+    ctx.fillText("Score: " + score, 10, 30);
+  }
+
+  function drawGameOver() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#ffcc00";
+    ctx.font = "36px Segoe UI";
+    ctx.textAlign = "center";
+    ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2 - 40);
+
+    ctx.font = "24px Segoe UI";
+    ctx.fillText("Score: " + score, canvas.width / 2, canvas.height / 2);
+    ctx.fillText("High Score: " + highScore, canvas.width / 2, canvas.height / 2 + 40);
+
+    ctx.font = "18px Segoe UI";
+    ctx.fillText("Press SPACE to restart", canvas.width / 2, canvas.height / 2 + 90);
+
+    ctx.textAlign = "left"; // reset align
+  }
+
+  function gameOver() {
+    gameState = "OVER";
+    if (score > highScore) highScore = score;
+  }
+
+  function resetGame() {
+    gameState = "PLAY";
+    bird.reset();
+    pipes.length = 0;
+    score = 0;
+  }
+
+  function update() {
+    bird.update();
+    updatePipes();
+  }
+
+  function draw() {
+    drawBackground();
+    bird.draw();
+    drawPipes();
+    drawScore();
+
+    if (gameState === "OVER") drawGameOver();
+  }
+
+  function loop() {
+    update();
+    draw();
+    frames++;
+    requestAnimationFrame(loop);
+  }
+
+  document.addEventListener("keydown", e => {
+    if (e.code === "Space") {
+      if (gameState === "OVER") {
+        resetGame();
+      } else {
+        bird.flap();
+      }
+    }
+  });
+
+  loop();
+</script>
+
+</body>
+</html>

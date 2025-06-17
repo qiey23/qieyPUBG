@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Family • Qiey</title>
+  <link rel="stylesheet" href="css/family.css">
+</head>
+<body>
+
+<header class="site-header">
+  <h1>🌟 MY FAMILY 🌟</h1>
+</header>
+
+<main class="family-container">
+  <div class="family-card">
+    <div class="card-front">
+      <img src="img/dad.jpg" alt="Ayah">
+    </div>
+    <div class="card-back">
+      <h3>ABAH</h3>
+      <p>UMUR 62.</p>
+    </div>
+  </div>
+  <div class="family-card">
+    <div class="card-front">
+      <img src="img/mom.jpg" alt="Ibu">
+    </div>
+    <div class="card-back">
+      <h3>MAMA</h3>
+      <p>UMUR 62.</p>
+    </div>
+  </div>
+  <div class="family-card">
+    <div class="card-front">
+      <img src="img/na.jpg" alt="Adik">
+    </div>
+    <div class="card-back">
+      <h3>ZULIANA</h3>
+      <p>SULONG,UMUR 34.</p>
+    </div>
+  </div>
+    <div class="family-card">
+    <div class="card-front">
+      <img src="img/ika.jpg" alt="Adik">
+    </div>
+    <div class="card-back">
+      <h3>ZULAIKHA</h3>
+      <p>ANAK NOMBOR 2,UMUR 30</p>
+    </div>
+  </div>
+    <div class="family-card">
+    <div class="card-front">
+      <img src="img/nurul.jpg" alt="Adik">
+    </div>
+    <div class="card-back">
+      <h3>NURUL</h3>
+      <p>ANAK NOMBOR 3,UMUR 28.</p>
+    </div>
+  </div>
+    <div class="family-card">
+    <div class="card-front">
+      <img src="img/kiey.jpg" alt="Adik">
+    </div>
+    <div class="card-back">
+      <h3>AQIL</h3>
+      <p>BONGSU, UMUR 21.</p>
+    </div>
+  </div>
+</main>
+
+<section class="gallery-button">
+  <button onclick="showGallery()">Lihat Semua Gambar Keluarga</button>
+</section>
+
+<section id="family-gallery" class="family-gallery hidden">
+  <h2>Family Gallery</h2>
+  <div class="gallery-grid">
+    <img src="img/family.jpg" alt="">
+    <!-- Add more here -->
+  </div>
+</section>
+
+<script>
+  function showGallery() {
+    document.getElementById('family-gallery').classList.remove('hidden');
+    document.querySelector('.gallery-button button').style.display = 'none';
+    document.getElementById('family-gallery').scrollIntoView({behavior: 'smooth'});
+  }
+</script>
+
+</body>
+</html>

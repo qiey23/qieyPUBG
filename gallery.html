@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PUBG Gameplay Gallery</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+      font-family: 'Segoe UI', sans-serif;
+      color: #ffcc00;
+      background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+      background-size: cover;
+    }
+
+    header {
+      background-color: #111;
+      padding: 30px 10px;
+      text-align: center;
+      box-shadow: 0 0 20px #ffcc00aa;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      color: #ffcc00;
+      text-shadow: 0 0 15px #ffcc00cc, 0 0 40px #fff20099;
+      letter-spacing: 2px;
+    }
+
+    nav {
+      background: #1a1a1a;
+      padding: 12px;
+      text-align: center;
+      box-shadow: 0 0 15px #ffcc00aa;
+    }
+
+    nav a {
+      color: #ffcc00;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #fff200;
+      text-shadow: 0 0 10px #fff200;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 2rem;
+      text-shadow: 0 0 15px #ffcc00aa, 0 0 40px #fff20099;
+      animation: flicker 2s infinite;
+    }
+
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+      }
+      20%, 24%, 55% {
+        opacity: 0.6;
+      }
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .video-card {
+      width: 320px;
+      max-width: 90vw;
+      position: relative;
+      overflow: hidden;
+      border: 3px solid #ffcc00;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #ffcc00aa;
+      transition: transform 0.3s ease;
+    }
+
+    .video-card video,
+    .video-card iframe {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .video-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 40px #fff200aa;
+    }
+
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      background: rgba(0,0,0,0.8);
+      color: #ffcc00;
+      width: 100%;
+      padding: 10px;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      font-weight: bold;
+    }
+
+    .video-card:hover .overlay {
+      opacity: 1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      color: #ffcc00;
+      box-shadow: 0 -5px 20px #ffcc00aa;
+      font-size: 14px;
+    }
+
+    .beloved-section {
+      margin-top: 60px;
+      border-top: 2px solid #ffcc00;
+      padding-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔥 PUBG Gameplay Gallery 🔥</h1>
+</header>
+
+<section>
+  <h2>My Legendary Gameplay 🎮</h2>
+  <div class="gallery">
+
+    <!-- Video Card 1 -->
+    <div class="video-card">
+      <video controls>
+        <source src="img/pubg7.mp4" type="video/mp4">
+      </video>
+      <div class="overlay">
+        <a href="https://vt.tiktok.com/ZSkbwkFh6/" target="_blank" style="color: #ffcc00;">🎥 Watch on TikTok</a>
+      </div>
+    </div>
+
+    <!-- Video Card 2 -->
+    <div class="video-card">
+      <video controls>
+        <source src="img/pubg5.mp4" type="video/mp4">
+      </video>
+      <div class="overlay">
+        <a href="https://vt.tiktok.com/ZSkbweNqW/" target="_blank" style="color: #ffcc00;">🎥 Watch on TikTok</a>
+      </div>
+    </div>
+
+    <!-- Video Card 3 -->
+    <div class="video-card">
+      <video controls>
+        <source src="img/pubg6.mp4" type="video/mp4">
+      </video>
+      <div class="overlay">
+        <a href="https://vt.tiktok.com/ZSkbwrcSx/" target="_blank" style="color: #ffcc00;">🎥 Watch on TikTok</a>
+      </div>
+    </div>
+
+    <!-- Video Card 4 -->
+    <div class="video-card">
+      <video controls>
+        <source src="img/pubg8.mp4" type="video/mp4">
+      </video>
+      <div class="overlay">
+        <a href="https://vt.tiktok.com/ZSkbwMpAg/" target="_blank" style="color: #ffcc00;">🎥 Watch on TikTok</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SPECIAL BELOVED SECTION -->
+<section class="beloved-section">
+  <h2>💖 Special Video About My Beloved 💖</h2>
+  <div class="gallery">
+
+    <div class="video-card">
+      <video controls>
+        <source src="img/syg.mp4" type="video/mp4">
+      </video>
+      <div class="overlay">
+        <a href="https://www.tiktok.com/@qiey23?_t=ZS-8xI0sYHbjXt" target="_blank" style="color: #ffcc00;">🌹 My Heart on TikTok</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
